@@ -1,0 +1,8 @@
+2023/8/14:Initial Start
+1:53 Started working on chassis
+2:14 Finished right chassis, know bug is that gear is slightly bigger then wheel. Tilitng the chassis to the chassis direction will prove nessasary to keep the chassis working
+2:18 Started working on left chassis
+2:44 Finished left chassis
+2:45 Thinking of ideas to fix gear problem
+2:46 Starting to redo geartrain
+3:14 Finished Lrft geartrain, doing right tommorow
