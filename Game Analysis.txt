@@ -4,6 +4,10 @@ Collect green cubes, dump in nearest box, Collect purple cubes, while knocking o
 
 Score Analysis:
 
-Green cubes: 52 Points
+Green cubes: 22-31 Points
 Red blocks knocked over: 15
 Uniform Bonus: 30 Points
+Height Bonus(not guarenteed): 20
+
+Maximum Points: 31 + 15 + 30 + 20 = 96
+Minmum Points: 22 + 15 + 30 = 67
