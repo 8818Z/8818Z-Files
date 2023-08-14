@@ -3,3 +3,7 @@ Game Analysis:
 Collect green cubes, dump in nearest box, Collect purple cubes, while knocking over red cubes, dump the purple cubes, then Park in parking area.
 
 Score Analysis:
+
+Green cubes: 52 Points
+Red blocks knocked over: 15
+Uniform Bonus: 30 Points
