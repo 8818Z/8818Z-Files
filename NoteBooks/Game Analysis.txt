@@ -1,7 +1,10 @@
 Game Analysis:
+Creation Date: 2023-08-14
 Members: Ryan, Joshua, Justin
 
 Collect green cubes, dump in nearest box, Collect purple cubes, while knocking over red cubes, dump the purple cubes, then Park in parking area.
+
+
 
 Score Analysis:
 
