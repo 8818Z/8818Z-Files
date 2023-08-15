@@ -6,3 +6,6 @@
 2:45 Thinking of ideas to fix gear problem
 2:46 Starting to redo geartrain
 3:14 Finished Lrft geartrain, doing right tommorow
+
+2023-08-15: Day 2
+9:50 Started working on Right chassis
