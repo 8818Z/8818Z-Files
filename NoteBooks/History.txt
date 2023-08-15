@@ -12,3 +12,16 @@
 10:00 Reworking An extension that was used on the bar to extend it(Ryan)
 10:07 Finished Right chassis
 10:22 Fixed issues with left chassis, that caused the wheel to collide with the outer beam. Also added general stability shafts.
+10:53 Finished main part of chassis
+11:03 Stabilizing chassis
+11:45 Finished Stabilizing chassis. Also did some wire organization so we dont have to disassemble everything in the future to organize a wire
+11:55 Working on tower
+11:59 Finished tower, added triangle for stability
+1:07 Started Working on the intake
+1:30 finished intake rollers
+1:31 Started attaching intake to tower
+1:50 intaketesting.mp4 is filmed
+2:50 Finished Intake mounting added chains to connect to intake rollers, and added a motor.
+2:51 Fixing some torque and Height issues
+3:15 Fixed up problems
+3:20 active intaketesting.mp4 filmed
