@@ -1,4 +1,4 @@
-2023/8/14:Initial Start
+2023/8/14:Initial Start  Members: Joshua, Ryan
 1:53 Started working on chassis
 2:14 Finished right chassis, know bug is that gear is slightly bigger then wheel. Tilitng the chassis to the chassis direction will prove nessasary to keep the chassis working
 2:18 Started working on left chassis
@@ -7,7 +7,7 @@
 2:46 Starting to redo geartrain
 3:14 Finished Lrft geartrain, doing right tommorow
 
-2023-08-15: Day 2
+2023-08-15: Day 2:  Members: Joshua, Ryan
 9:50 Started working on Right chassis
 10:00 Reworking An extension that was used on the bar to extend it(Ryan)
 10:07 Finished Right chassis
@@ -25,3 +25,12 @@
 2:51 Fixing some torque and Height issues
 3:15 Fixed up problems
 3:20 active intaketesting.mp4 filmed
+
+
+2023-08-16: Day 3
+10:00 Started to fix size limit problems with the robot, motor was outside, and shaft was too long
+10:14 Finished fixing size limit issues. Starting to work on robot durabiliby and bucket
+10:27 Increased durabiliby of the robot and the tower.
+11:34 Finished bucket going to start mounting the bucket
+1:58 Changed bucket angle, also made major changes to the bucket, including covering it in plasic, changing the position around, and messing around with the mounting position
+4:19 Finished a POC of the bucket, added walls to the bucket, added basic dumper code to the testing code, and also Increased durabiliby and durabiliby of the connecters

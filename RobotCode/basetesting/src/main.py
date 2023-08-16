@@ -13,6 +13,7 @@ left_drive_smart = Motor(Ports.PORT1, 1, False)
 right_drive_smart = Motor(Ports.PORT6, 1, True)
 drivetrain = DriveTrain(left_drive_smart, right_drive_smart, 200, 173, 76, MM, 1)
 intake = Motor(Ports.PORT2,1,False)
+dumper = Motor(Ports.PORT3,1,False)
 intakeactive = False
 drivetrain_l_needs_to_be_stopped_controller = False
 drivetrain_r_needs_to_be_stopped_controller = False
@@ -42,7 +43,7 @@ def rc_auto_loop_function_controller():
                 # time the input is in the deadband range
                 drivetrain_l_needs_to_be_stopped_controller = True
             # check if the value is inside of the deadband range
-            if drivetrain_right_side_speed < -5 and drivetrain_right_side_speed > 5:
+            if drivetrain_right_side_speed < 5 and drivetrain_right_side_speed > -5:
                 # check if the right motor has already been stopped
                 if drivetrain_r_needs_to_be_stopped_controller:
                     # stop the right drive motor
@@ -76,11 +77,30 @@ def toggleintake():
     if not intakeactive:
         intakeactive = True
         intake.spin(FORWARD)
-        intake.set_velocity(55,PERCENT)
+        intake.set_velocity(100,PERCENT)
         intake.set_max_torque(100,PERCENT)
     else:
         intakeactive = False
         intake.spin(REVERSE)
-brain.screen.print("yes")
+dumperstatus = "down"
+dumper.set_stopping(BRAKE)
+def dumperup():
+    dumper.spin(FORWARD)
+
+def dumperdown():
+    dumper.spin(REVERSE)
+
+def dumperstop():
+    dumper.stop()
+
+
+controller.buttonLUp.pressed(dumperup)
+controller.buttonLDown.pressed(dumperdown)
+controller.buttonLUp.released(dumperstop)
+controller.buttonLDown.released(dumperstop)
+right_drive_smart.set_velocity(100,PERCENT)
+right_drive_smart.set_max_torque(100,PERCENT)
+left_drive_smart.set_velocity(100,PERCENT)
+left_drive_smart.set_max_torque(100,PERCENT)
 controller.buttonRUp.pressed(toggleintake)
 
