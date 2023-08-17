@@ -27,10 +27,23 @@
 3:20 active intaketesting.mp4 filmed
 
 
-2023-08-16: Day 3
+2023-08-16: Day 3:  Members: Joshua, Ryan
 10:00 Started to fix size limit problems with the robot, motor was outside, and shaft was too long
 10:14 Finished fixing size limit issues. Starting to work on robot durabiliby and bucket
 10:27 Increased durabiliby of the robot and the tower.
 11:34 Finished bucket going to start mounting the bucket
 1:58 Changed bucket angle, also made major changes to the bucket, including covering it in plasic, changing the position around, and messing around with the mounting position
 4:19 Finished a POC of the bucket, added walls to the bucket, added basic dumper code to the testing code, and also Increased durabiliby and durabiliby of the connecters
+
+2023-08-17: Day 4
+10:00 Started to widen bucket, so we can hold more cubes at a time
+10:27 finished making the bucket wider, now making roof for the bucket
+10:43 added plastic to entrance of the bucket, so cubes won't keep falling out
+10:50 added a beam to secure the tower, finishing the bucket roof
+11:14 changed sprockets on bucket to gears for more torque, when we added the roof and walls bucket got much heavier
+11:31 adding more triangles to the robot to makfe it more sturdy and durable
+11:47 Finished adding triangles and one beams to the tower
+11:57: addng another tower mounted to the back beam
+1:10 Relocating motor, added 1 beams to secure the tower to the chassis.
+2:50 Finished Relocating motor
+3:114 adding roof to the bucket

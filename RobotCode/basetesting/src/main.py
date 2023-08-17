@@ -2,11 +2,8 @@
 
 # Library imports
 from vex import *
-
-# Brain should be defined by default
 brain=Brain()
 
-# Robot configuration code
 brain_inertial = Inertial()
 controller = Controller()
 left_drive_smart = Motor(Ports.PORT1, 1, False)
@@ -27,8 +24,8 @@ def rc_auto_loop_function_controller():
             # calculate the drivetrain motor velocities from the controller joystick axies
             # left = axisA + axisC
             # right = axisA - axisC
-            drivetrain_left_side_speed = controller.axisA.position() + controller.axisC.position()
-            drivetrain_right_side_speed = controller.axisA.position() - controller.axisC.position()
+            drivetrain_left_side_speed = controller.axisA.position() - controller.axisC.position()
+            drivetrain_right_side_speed = controller.axisA.position() + controller.axisC.position()
             
             # check if the value is inside of the deadband range
             if drivetrain_left_side_speed < 5 and drivetrain_left_side_speed > -5:
@@ -85,15 +82,22 @@ def toggleintake():
 dumperstatus = "down"
 dumper.set_stopping(BRAKE)
 def dumperup():
+    dumper.set_stopping(BRAKE)
     dumper.spin(FORWARD)
 
 def dumperdown():
+    dumper.set_stopping(BRAKE)
     dumper.spin(REVERSE)
 
 def dumperstop():
+    dumper.set_stopping(BRAKE)
     dumper.stop()
 
+def dropdumper():
+    dumper.set_stopping(COAST)
 
+dumper.set_max_torque(100,PERCENT)
+dumper.set_velocity(100,PERCENT)
 controller.buttonLUp.pressed(dumperup)
 controller.buttonLDown.pressed(dumperdown)
 controller.buttonLUp.released(dumperstop)
@@ -103,4 +107,4 @@ right_drive_smart.set_max_torque(100,PERCENT)
 left_drive_smart.set_velocity(100,PERCENT)
 left_drive_smart.set_max_torque(100,PERCENT)
 controller.buttonRUp.pressed(toggleintake)
-
+controller.buttonRDown.pressed(dropdumper)
