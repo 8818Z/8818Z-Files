@@ -46,4 +46,14 @@
 11:57: addng another tower mounted to the back beam
 1:10 Relocating motor, added 1 beams to secure the tower to the chassis.
 2:50 Finished Relocating motor
-3:114 adding roof to the bucket
+3:14 adding roof to the bucket
+4:15 Relocated brain. Also finished a chain mechanisim with a double gear mechanisim so lift the bucket
+
+2023-08-18: Day 5  Members: Joshua, Ryan
+9:53 Reversing the sprockets and motors, so the robot will fit within the size limit. Also labaling the wires, and rewiring the robot.
+10:37 finished reversing gears and sprokets, now making robot even m,or narrow so it will stay in size limit
+11:03 getting rid of gears, chaging to sprockets, and also adding another motor on the other side
+1:05 Fixing the bucket scraping against the intake, adding a custom drive code, completly rewriting the code
+2:09 Finished all fixes listed above. Now testing said fixes. Also changed the connecter holding the two plates of the bucket together, to a more stable one
+2:24 starting to fix inverted turning pn the new drive code
+2:50 finally finished fixing the drive code

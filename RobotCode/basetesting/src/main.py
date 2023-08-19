@@ -1,110 +1,94 @@
 
-
-# Library imports
 from vex import *
+import urandom
+
+# Brain should be defined by default
 brain=Brain()
 
-brain_inertial = Inertial()
+from vex import *
+
+# define eletronics
+brain = Brain()
 controller = Controller()
-left_drive_smart = Motor(Ports.PORT1, 1, False)
-right_drive_smart = Motor(Ports.PORT6, 1, True)
-drivetrain = DriveTrain(left_drive_smart, right_drive_smart, 200, 173, 76, MM, 1)
-intake = Motor(Ports.PORT2,1,False)
-dumper = Motor(Ports.PORT3,1,False)
-intakeactive = False
-drivetrain_l_needs_to_be_stopped_controller = False
-drivetrain_r_needs_to_be_stopped_controller = False
-def rc_auto_loop_function_controller():
-    global drivetrain_l_needs_to_be_stopped_controller, drivetrain_r_needs_to_be_stopped_controller, remote_control_code_enabled
-    # process the controller input every 20 milliseconds
-    # update the motors based on the input values
+Right_Drive = Motor(Ports.PORT6,1.5,True)
+Left_Drive = Motor(Ports.PORT1,1.5,True)
+Internal = Inertial()
+drivebase = SmartDrive(Left_Drive, Right_Drive, Internal, 200)
+dumperRight = Motor(Ports.PORT2,1,False)
+dumperLeft = Motor(Ports.PORT3,1,False)
+dumper = MotorGroup(dumperLeft,dumperRight)
+intake = Motor(Ports.PORT4,1,False)
+Rstop = False
+Lstop = False
+sensitivity = 5
+def calibrate_drivetrain():
+    # Calibrate the Drivetrain Inertial
+    sleep(200, MSEC)
+    brain.screen.print("Calibrating")
+    brain.screen.next_row()
+    brain.screen.print("Inertial")
+    Internal.calibrate()
+    while Internal.is_calibrating():
+        sleep(25, MSEC)
+    brain.screen.clear_screen()
+    brain.screen.set_cursor(1, 1)
+
+calibrate_drivetrain()
+#controllerCode
+def controllerloop():
+    global Rstop, Lstop, Right_Drive, Left_Drive, controller, brain
     while True:
-        if remote_control_code_enabled:
-            
-            # calculate the drivetrain motor velocities from the controller joystick axies
-            # left = axisA + axisC
-            # right = axisA - axisC
-            drivetrain_left_side_speed = controller.axisA.position() - controller.axisC.position()
-            drivetrain_right_side_speed = controller.axisA.position() + controller.axisC.position()
-            
-            # check if the value is inside of the deadband range
-            if drivetrain_left_side_speed < 5 and drivetrain_left_side_speed > -5:
-                # check if the left motor has already been stopped
-                if drivetrain_l_needs_to_be_stopped_controller:
-                    # stop the left drive motor
-                    left_drive_smart.stop()
-                    # tell the code that the left motor has been stopped
-                    drivetrain_l_needs_to_be_stopped_controller = False
-            else:
-                # reset the toggle so that the deadband code knows to stop the left motor next
-                # time the input is in the deadband range
-                drivetrain_l_needs_to_be_stopped_controller = True
-            # check if the value is inside of the deadband range
-            if drivetrain_right_side_speed < 5 and drivetrain_right_side_speed > -5:
-                # check if the right motor has already been stopped
-                if drivetrain_r_needs_to_be_stopped_controller:
-                    # stop the right drive motor
-                    right_drive_smart.stop()
-                    # tell the code that the right motor has been stopped
-                    drivetrain_r_needs_to_be_stopped_controller = False
-            else:
-                # reset the toggle so that the deadband code knows to stop the right motor next
-                # time the input is in the deadband range
-                drivetrain_r_needs_to_be_stopped_controller = True
-            
-            # only tell the left drive motor to spin if the values are not in the deadband range
-            if drivetrain_l_needs_to_be_stopped_controller:
-                left_drive_smart.set_velocity(drivetrain_left_side_speed, PERCENT)
-                left_drive_smart.spin(FORWARD)
-            # only tell the right drive motor to spin if the values are not in the deadband range
-            if drivetrain_r_needs_to_be_stopped_controller:
-                right_drive_smart.set_velocity(drivetrain_right_side_speed, PERCENT)
-                right_drive_smart.spin(FORWARD)
-        # wait before repeating the process
-        wait(20, MSEC)
+        driveleftspeed = controller.axisC.position() - controller.axisA.position()
+        driverightspeed = controller.axisC.position() + controller.axisA.position() 
+        
+        if driveleftspeed < sensitivity and driveleftspeed > -sensitivity:
+            if Lstop:
+                Left_Drive.stop()
+                Lstop = False
+        else:
+            Lstop = True
+        if driverightspeed < sensitivity and driverightspeed > -sensitivity:
+            if Rstop:
+                Right_Drive.stop()
+                Rstop = False
+        else:
+            Rstop = True
 
-# define variable for remote controller enable/disable
-remote_control_code_enabled = True
+        if Lstop:
+            Left_Drive.set_velocity(driveleftspeed,PERCENT)
+            Left_Drive.spin(FORWARD)
+        if Rstop:
+            Right_Drive.set_velocity(driverightspeed,PERCENT)
+            Right_Drive.spin(FORWARD)
+        wait(20,MSEC)
 
-rc_auto_loop_thread_controller = Thread(rc_auto_loop_function_controller)
+
+
+
+Thread(controllerloop)
+intakeactive = False
+intake.set_velocity(100,PERCENT)
+intake.set_max_torque(100,PERCENT)
 def toggleintake():
-    print("tset")
-    brain.screen.print("yeses")
     global intakeactive
-    if not intakeactive:
-        intakeactive = True
-        intake.spin(FORWARD)
-        intake.set_velocity(100,PERCENT)
-        intake.set_max_torque(100,PERCENT)
-    else:
+    if intakeactive:
         intakeactive = False
+        intake.spin(FORWARD)
+    else:
+        intakeactive = True
         intake.spin(REVERSE)
-dumperstatus = "down"
-dumper.set_stopping(BRAKE)
-def dumperup():
-    dumper.set_stopping(BRAKE)
-    dumper.spin(FORWARD)
+bucketstatus = "down"
 
-def dumperdown():
-    dumper.set_stopping(BRAKE)
-    dumper.spin(REVERSE)
-
-def dumperstop():
-    dumper.set_stopping(BRAKE)
-    dumper.stop()
-
-def dropdumper():
-    dumper.set_stopping(COAST)
-
+def togglebucket():
+    global bucketstatus
+    if bucketstatus == "down":
+        bucketstatus = "up"
+        dumper.spin_to_position(281.62,DEGREES)
+    else:
+        bucketstatus == "down"
+        dumper.spin_to_position(0,DEGREES)
 dumper.set_max_torque(100,PERCENT)
-dumper.set_velocity(100,PERCENT)
-controller.buttonLUp.pressed(dumperup)
-controller.buttonLDown.pressed(dumperdown)
-controller.buttonLUp.released(dumperstop)
-controller.buttonLDown.released(dumperstop)
-right_drive_smart.set_velocity(100,PERCENT)
-right_drive_smart.set_max_torque(100,PERCENT)
-left_drive_smart.set_velocity(100,PERCENT)
-left_drive_smart.set_max_torque(100,PERCENT)
+dumper.set_position(0,DEGREES)
+dumper.set_stopping(HOLD)
 controller.buttonRUp.pressed(toggleintake)
-controller.buttonRDown.pressed(dropdumper)
+controller.buttonRDown.pressed(togglebucket)
