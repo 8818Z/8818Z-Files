@@ -57,3 +57,15 @@
 2:09 Finished all fixes listed above. Now testing said fixes. Also changed the connecter holding the two plates of the bucket together, to a more stable one
 2:24 starting to fix inverted turning pn the new drive code
 2:50 finally finished fixing the drive code
+
+2023-8-22 Day 6 Members: Ryan, Joshua
+1:25 making floor of intake wider so robot can collect more cubes at a time
+2:37 turns out that intake didn't need floor, it could can collect right off the ground, now testing bucket
+3:17 adding more walls to bucket so cubes won't get jammed in the the sides
+
+
+2023-9-5 Day 7 Members Ryan, Joshua, Justin
+4:08 Replaced Small sprockets with massive ones
+4:51 Addung plastic walls, changed gear ratio of the intake, flattened the dumper plastic;fixing the dumper slant
+
+
