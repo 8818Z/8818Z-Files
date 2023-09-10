@@ -77,7 +77,6 @@ def toggleintake():
     else:
         intakeactive = True
         intake.spin(REVERSE)
-
 def dumperup():
     intake.spin(REVERSE)
     dumper.spin(FORWARD)
@@ -88,13 +87,7 @@ def dumperdown():
 
 def dumperstop():
     dumper.stop()
-
 dumper.set_max_torque(100,PERCENT)
 dumper.set_position(0,DEGREES)
 dumper.set_stopping(HOLD)
 controller.buttonRUp.pressed(toggleintake)
-
-controller.buttonLUp.pressed(dumperup)
-controller.buttonLDown.pressed(dumperdown)
-controller.buttonLUp.released(dumperstop)
-controller.buttonLDown.released(dumperstop)
