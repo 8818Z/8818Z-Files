@@ -76,5 +76,16 @@
 5:21 testing how many cubes robot can carry at once and dump into boxes
 
 
-2023-10-10 Day9 Members: Ryan,Justin, Joshua
+2023-9-10 Day9 Members: Ryan,Justin, Joshua
 3:56 Removing parts from the intake so that it can fit in the 11 inch size limit
+
+
+2023-9-11 Day 10 Members: Ryan, Justin, Joshua
+4:00 Fixed issue with intake getting stuck easily
+4:30 Making barrier to make the robot unable to suck up purple cubes (really close with the size limit, ngl)
+4:52 Making the bucket drop less cubes when dumping
+5:10 Adding a automatic idle lock to the code, slowmode, and general readability changes, using VSCode formatter
+
+2023-9-12 Day 11 Members:Ryan, Justin, Joshua
+4:51 started making bucket more stabilized, it kept getting loose
+5:16 Replaced all the connecters with more stables ones to make the bucket lifting better
