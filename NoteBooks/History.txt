@@ -89,3 +89,9 @@
 2023-9-12 Day 11 Members:Ryan, Justin, Joshua
 4:51 started making bucket more stabilized, it kept getting loose
 5:16 Replaced all the connecters with more stables ones to make the bucket lifting better
+
+
+2023-9-15
+4:20 Improving code intake reset, adding debug display, and fixing afk timer
+4:56 Improved code intake reset, fixing the broke debug display, and checking the locking
+5:30 Fixed all code issues

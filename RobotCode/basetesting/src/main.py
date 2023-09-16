@@ -1,4 +1,3 @@
-
 from vex import *
 import urandom
 
@@ -8,8 +7,8 @@ brain = Brain()
 from vex import *
 
 # locking
-locktimer = 120
-MAXIMUIMTIMER = 120
+locktimer = 100
+MAXIMUIMTIMER = 100
 locked = False
 inputs = False
 
@@ -27,11 +26,11 @@ intake = Motor(Ports.PORT4,1,False)
 Rstop = False
 Lstop = False
 slow = False
-sensitivity = 2
+sensitivity = 4
 
 #controllerCode
 def controllerloop():
-    global Rstop, Lstop, Right_Drive, Left_Drive, controller, brain, inputs
+    global Rstop, Lstop, Right_Drive, Left_Drive, controller, brain, inputs, locked
     while True:
         driveleftspeed = controller.axisC.position() - controller.axisA.position()
         driverightspeed = controller.axisC.position() + controller.axisA.position() 
@@ -51,12 +50,12 @@ def controllerloop():
         else:
             Rstop = True
 
-        if Lstop:
+        if Lstop and not locked:
             inputs = True
             Left_Drive.set_velocity(driveleftspeed,PERCENT)
             Left_Drive.set_max_torque(100,PERCENT)
             Left_Drive.spin(FORWARD)
-        if Rstop:
+        if Rstop and not locked:
             inputs = True
             Right_Drive.set_velocity(driverightspeed,PERCENT)
             Left_Drive.set_max_torque(100,PERCENT)
@@ -70,7 +69,8 @@ def ticktimer():
         if locked == False:
             locktimer -= 1
             if inputs == True:
-                locktimer = MAXIMUMTIMER
+                locktimer = MAXIMUIMTIMER
+                inputs = False
             else:
                 if locktimer == 0:
                         locked = True
@@ -82,43 +82,58 @@ def ticktimer():
 Thread(ticktimer)
 Thread(controllerloop)
 intakeactive = False
-intake.set_velocity(80,PERCENT)
+intake.set_velocity(85,PERCENT)
 intake.set_max_torque(100,PERCENT)
 def toggleintake():
-    wait(1,MSEC)
-    global intakeactive, inputs
-    inputs = True
-    if intakeactive:
-        intakeactive = False
-        intake.spin(FORWARD)
-    else:
-        intakeactive = True
-        intake.spin(REVERSE)
-    inputs = False
+    global locked
+    if not locked:
+        wait(1,MSEC)
+        global intakeactive, inputs
+        inputs = True
+        if intakeactive:
+            intakeactive = False
+            intake.spin(FORWARD)
+        else:
+            intakeactive = True
+            intake.spin(REVERSE)
+    
 
 def dumperup():
-    wait(1,MSEC)
-    global inputs
-    inputs = True
-    dumper.spin(FORWARD)
+    global locked
+    if not locked:
+        wait(1,MSEC)
+        global inputs, intakeactive
+        inputs = True
+        dumper.spin(FORWARD)
+        wait(2,SECONDS)
+        intake.stop()
+        intakeactive = False
 
 def dumperdown():
-    wait(1,MSEC)
-    global inputs
-    inputs = True
-    dumper.spin(REVERSE)
+    global locked
+    if not locked:
+        global inputs, intakeactive
+        inputs = True
+        dumper.spin(REVERSE)
+        wait(2,SECONDS)
+        intake.stop()
+        intakeactive = False
 
 def dumperstop():
-    wait(1,MSEC)
-    global inputs
-    inputs = True
-    dumper.stop()
-
+    global locked
+    if not locked:
+        wait(1,MSEC)
+        global inputs
+        inputs = True
+        dumper.stop()
 def intakestop():
-    wait(1,MSEC)
-    global inputs
-    inputs = True
-    intake.stop()
+    global locked
+    if not locked:
+        wait(1,MSEC)
+        global inputs, intakeactive
+        inputs = True
+        intake.stop()
+        intakeactive = False
 
 def slowmode():
     wait(1,MSEC)
@@ -129,11 +144,27 @@ def slowmode():
         sensitivity = 20
     else:
         slow = False
-        sensitivity = 2
+        sensitivity = 4
 
 
+def debugscreen():
+    while True:
+        global locktimer
+        brain.screen.set_cursor(1,1)
+        brain.screen.print("Turn " + str(controller.axisC.position()))
+        brain.screen.set_cursor(2,1)
+        brain.screen.print("Forward " + str(controller.axisA.position()))
+        brain.screen.set_cursor(3,1)
+        brain.screen.print("Timer " + str(locktimer))
+        brain.screen.set_cursor(4,1)
+        brain.screen.print("dumperdown " + str(controller.buttonLUp.pressing()))
+        brain.screen.set_cursor(5,1)
+        brain.screen.print("dumpertup " + str(controller.buttonLDown.pressing()))
+
+        wait(180,MSEC)
+        brain.screen.clear_screen()
+Thread(debugscreen)
 dumper.set_max_torque(100,PERCENT)
-dumper.set_velocity(80,PERCENT)
 dumper.set_position(0,DEGREES)
 dumper.set_stopping(HOLD)
 controller.buttonFUp.pressed(slowmode)
@@ -143,3 +174,4 @@ controller.buttonLDown.pressed(dumperdown)
 controller.buttonRDown.pressed(intakestop)
 controller.buttonLUp.released(dumperstop)
 controller.buttonLDown.released(dumperstop)
+brain.screen.set_font(FontType.MONO12)
