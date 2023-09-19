@@ -91,7 +91,22 @@
 5:16 Replaced all the connecters with more stables ones to make the bucket lifting better
 
 
-2023-9-15
+2023-9-15 Day 12 members:Ryan, Josh, Justin
 4:20 Improving code intake reset, adding debug display, and fixing afk timer
 4:56 Improved code intake reset, fixing the broke debug display, and checking the locking
 5:30 Fixed all code issues
+6:04 Now practicing driving
+
+2023-9-17 Day 13 Members: Ryan, Josh, Justin
+3:58 Arrived and practincing driveing with robot
+5:04 Started working on skeleton of our V2 bot
+5:50 trying to find more pins, we were running short on them
+
+2023-9-18 Day 14 Members: Ryan, Josh
+5:22 continued working on the skeleton on our chassis
+5:57 finished working on our skeleton, and now gearing up our chassis
+6:45 finshed gearing up one side of our chassis and now duplicating it on the other side
+
+
+2023-9-19 Day 15 Members: Ryan, Josh
+4:22 Rechaining chassis of our V2 robot, it wasn't working very well
