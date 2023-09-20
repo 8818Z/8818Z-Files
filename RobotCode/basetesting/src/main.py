@@ -82,6 +82,7 @@ def ticktimer():
 Thread(ticktimer)
 Thread(controllerloop)
 intakeactive = False
+dumper.set_velocity(60,PERCENT)
 intake.set_velocity(85,PERCENT)
 intake.set_max_torque(100,PERCENT)
 def toggleintake():
@@ -110,9 +111,8 @@ def dumperup():
         intakeactive = False
 
 def dumperdown():
-    global locked
+    global locked,inputs, intakeactive
     if not locked:
-        global inputs, intakeactive
         inputs = True
         dumper.spin(REVERSE)
         wait(2,SECONDS)
@@ -120,17 +120,15 @@ def dumperdown():
         intakeactive = False
 
 def dumperstop():
-    global locked
+    global locked, inputs
     if not locked:
         wait(1,MSEC)
-        global inputs
         inputs = True
         dumper.stop()
 def intakestop():
-    global locked
+    global locked, inputs, intakeactive
     if not locked:
         wait(1,MSEC)
-        global inputs, intakeactive
         inputs = True
         intake.stop()
         intakeactive = False
@@ -160,7 +158,6 @@ def debugscreen():
         brain.screen.print("dumperdown " + str(controller.buttonLUp.pressing()))
         brain.screen.set_cursor(5,1)
         brain.screen.print("dumpertup " + str(controller.buttonLDown.pressing()))
-
         wait(180,MSEC)
         brain.screen.clear_screen()
 Thread(debugscreen)
