@@ -110,3 +110,9 @@
 
 2023-9-19 Day 15 Members: Ryan, Josh
 4:22 Rechaining chassis of our V2 robot, it wasn't working very well
+
+2023-09-27 day 16 Members:Ryan, Joshua, Justin
+4:30 starting to rechain v2
+5:00 started remaking chassis tower, making new intake for v2, stabalizing v2 chassis
+(From now on the robot will mean v2, unless specifically stated)
+6:40 Finished all changes listed above

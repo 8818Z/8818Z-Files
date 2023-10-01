@@ -83,7 +83,7 @@ Thread(ticktimer)
 Thread(controllerloop)
 intakeactive = False
 dumper.set_velocity(60,PERCENT)
-intake.set_velocity(85,PERCENT)
+intake.set_velocity(90,PERCENT)
 intake.set_max_torque(100,PERCENT)
 def toggleintake():
     global locked
@@ -100,31 +100,29 @@ def toggleintake():
     
 
 def dumperup():
-    global locked
-    if not locked:
-        wait(1,MSEC)
-        global inputs, intakeactive
-        inputs = True
-        dumper.spin(FORWARD)
-        wait(2,SECONDS)
-        intake.stop()
-        intakeactive = False
+    global locked,inputs, intakeactive
+
+    wait(1,MSEC)
+    inputs = True
+    dumper.spin(FORWARD)
+    wait(1.8,SECONDS)
+    intake.stop()
+    intakeactive = False
 
 def dumperdown():
     global locked,inputs, intakeactive
-    if not locked:
-        inputs = True
-        dumper.spin(REVERSE)
-        wait(2,SECONDS)
-        intake.stop()
-        intakeactive = False
+    inputs = True
+    dumper.spin(REVERSE)
+    wait(1.8,SECONDS)
+    intake.stop()
+    intakeactive = False
 
 def dumperstop():
     global locked, inputs
-    if not locked:
-        wait(1,MSEC)
-        inputs = True
-        dumper.stop()
+
+    wait(1,MSEC)
+    inputs = True
+    dumper.stop()
 def intakestop():
     global locked, inputs, intakeactive
     if not locked:
