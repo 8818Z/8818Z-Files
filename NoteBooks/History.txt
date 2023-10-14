@@ -116,3 +116,47 @@
 5:00 started remaking chassis tower, making new intake for v2, stabalizing v2 chassis
 (From now on the robot will mean v2, unless specifically stated)
 6:40 Finished all changes listed above
+6:50 Making new intake that can intake purple green and red
+
+2023-09-29 day 17
+4:30 lowered the support beams of the chassis
+4:45 fixing new intake to fit under the size limit
+7:22 Chained and added motor to the intake
+
+2023-10-01 day 18 Members: Ryan, Joshua, Justin
+3:08 disassemble v2, making new smaller version because it was exceeding width limit
+3:20 Making new intake without using big sprokets.
+3:48 Finished making new smaller intake.
+4:14 Finished disassembling the chassis, and took apart the v1 to get new parts (the robotics club was running short on parts)
+5:00 Finished making new intake, started on new chassis
+
+2023-10-03 day 19 members: Ryan, Joshua, Justin
+4:00 Finishing new elevated chassis, and working on the intake
+4:50 Stabalized chassis, and added baloon wheels to the intake so it can intake reds
+5:00 Making arms for the intake
+5:36 Stabalizing arms to get more torque
+6:03 Finished 1st arm, working on the second arm
+6:28 FInished second arm, waiting for Justin to add more Stabalization to the robot
+7:00 Finished all tasks
+
+2023-10-4 day 20 members: Ryan, Josh, Justin
+4:42 finished stabilizing chassis and tower, now chaining up our arms
+5:27 chaining chassis, adding motors to the intake
+6:58 Finished the arms, adding intake to the arms.
+
+2023-10-8 day 21 members Ryan, Joshua, Justin
+3:00 Starting a rebuild to attend Saturday competition
+4:43 Finished roller/intake using rubber bands
+4:56 Finished arms
+5:13 Finished chassis, putting robot together
+6:38 Making code for robot
+6:46 Finished robot code
+
+2023-10-9 day 22 members: Ryan, Justin, Joshua
+4:00 Added stand-offs to block the cubes from coming out
+4:34 Added bumpers into the intake so the cubes wouldnt get stuck in the intake on the way out.
+5:23 Moved entire intake up one, and remounted the intake for the arms. Made cubes exiting more efficient
+
+2023-10-10 day 23 members: Ryan, Justin, Joshua
+4:00 Testing Runs, so far going well
+4:34 starting on notebook
