@@ -1,0 +1,18 @@
+{
+	"extension": {
+		"version": "0.5.0",
+		"json": 2
+	},
+	"project": {
+		"name": "bentesting",
+		"description": "",
+		"creationDate": "10/8/2023, 5:06:52 PM",
+		"platform": "IQ2",
+		"language": "python",
+		"slot": 1,
+		"sdkVersion": "IQ2_1_0_0_17",
+		"python": {
+			"main": "src/main.py"
+		}
+	}
+}
