@@ -1,0 +1,18 @@
+{
+	"extension": {
+		"version": "0.5.0",
+		"json": 2
+	},
+	"project": {
+		"name": "autov1-5",
+		"description": "",
+		"creationDate": "10/11/2023, 6:30:21 PM",
+		"platform": "IQ2",
+		"language": "python",
+		"slot": 1,
+		"sdkVersion": "IQ2_1_0_0_17",
+		"python": {
+			"main": "src/main.py"
+		}
+	}
+}
